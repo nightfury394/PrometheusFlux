@@ -21,29 +21,33 @@ linters:
     - unconvert
     - unparam
     - unused
-
-linters-settings:
-  revive:
+  settings:
+    revive:
+      rules:
+        - name: comment-spacings
+        - name: import-shadowing
+  exclusions:
+    generated: lax
     rules:
-      - name: comment-spacings
-      - name: import-shadowing
+      - linters:
+          - lll
+        path: api/.*
+      - linters:
+          - dupl
+          - lll
+        path: internal/.*
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
 
 formatters:
   enable:
     - gofmt
     - goimports
-
-issues:
-  exclude-generated: lax
-  exclude-rules:
-    - linters:
-        - lll
-      path: api/.*
-    - linters:
-        - dupl
-        - lll
-      path: internal/.*
-  exclude-dirs:
-    - third_party
-    - builtin
-    - examples
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
