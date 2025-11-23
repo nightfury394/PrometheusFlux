@@ -1,0 +1,16 @@
+apiVersion: chaos.shanto.dev/v1alpha1
+kind: ChaosExperiment
+metadata:
+  labels:
+    app.kubernetes.io/name: chaosexperiment
+    app.kubernetes.io/managed-by: kustomize
+  name: pod-kill-nginx-demo
+spec:
+  target:
+    namespace: demo
+    labelSelector:
+      app: nginx
+  attack:
+    type: pod-kill
+  duration: 60s
+  mode: recurring
