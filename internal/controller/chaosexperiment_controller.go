@@ -21,15 +21,15 @@ import (
 	"math/rand"
 	"time"
 
+	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/tools/record"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	corev1 "k8s.io/api/core/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	chaosv1alpha1 "kubechaos-operator/api/v1alpha1"
 )
 
@@ -40,11 +40,11 @@ type ChaosExperimentReconciler struct {
 	Recorder record.EventRecorder
 }
 
-//+kubebuilder:rbac:groups=chaos.shanto.dev,resources=chaosexperiments,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=chaos.shanto.dev,resources=chaosexperiments/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=chaos.shanto.dev,resources=chaosexperiments/finalizers,verbs=update
-//+kubebuilder:rbac:groups="",resources=pods,verbs=get;list;watch;delete
-//+kubebuilder:rbac:groups="",resources=events,verbs=create;patch
+// +kubebuilder:rbac:groups=chaos.shanto.dev,resources=chaosexperiments,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=chaos.shanto.dev,resources=chaosexperiments/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=chaos.shanto.dev,resources=chaosexperiments/finalizers,verbs=update
+// +kubebuilder:rbac:groups="",resources=pods,verbs=get;list;watch;delete
+// +kubebuilder:rbac:groups="",resources=events,verbs=create;patch
 
 // Reconcile is part of the main Kubernetes reconciliation loop that aims to
 // move the current state of the cluster closer to the desired state by

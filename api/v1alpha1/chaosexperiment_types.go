@@ -20,8 +20,6 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-
-
 // ChaosExperimentSpec defines the desired state of ChaosExperiment
 type ChaosExperimentSpec struct {
 	// Target defines the selection criteria for the chaos experiment.
